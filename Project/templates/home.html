@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% block title %} {{title}} {% endblock %}
+
+{% block body %}
+	<div class="jumbotron text-center">
+		<form action="" method="post" name="roleLogin">
+			<h1> Bienvenido a "Mereces Tu Diploma?" </h1>
+			<p>
+				<br>{{ form.usuarioLogin }}<br><br>
+				{{ form.adminLogin }}<hr>
+				<br>
+			</p>
+		</form>
+	</div>
+	{% include '_navbar.html' %}
+{% endblock %}

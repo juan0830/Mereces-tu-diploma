@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block body %}
+	<div class="jumbotron text-center">
+		<form action="" method="post" name="roleRegistrar">
+			<h1> Bienvenido Admin {{user}} </h1>
+			<p>Que quieres hacer hoy?<hr></p>
+			<p>
+				<br>{{ form.registrarJugador }}<br><br>
+				{{ form.registrarAdmin }}
+				<br>
+			</p>
+		</form>
+	</div>
+	{% include '_navbar.html' %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% block title %} {{title}} {% endblock %}
+
+{% block body %}
+	<br>
+	<br>
+	<h1> Sign In </h1>
+		<form action="" method="post" name="login">
+		<p>
+			Correo: {{ form.correo }}<br>
+			<br>Contraseña: {{ form.passwd }}<br>
+			{{ form.signIn }}
+		</p>
+		</form>
+	{% include '_navbar.html' %}
+{% endblock %}

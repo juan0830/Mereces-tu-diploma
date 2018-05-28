@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="/static/css/juego.css">
+
+{% extends 'base/base.html' %}
+<head>
+{% block title %} {{title}} {% endblock %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+
+<script type="text/javascript">
+	window.onload = function(){
+		//document.onkeypress = chars;
+		
+		document.onkeydown = chars;
+		drawPlayer()
+	};
+
+	var leftRight = 0;
+	var upDown = 0;
+	function drawPlayer(){
+		var canvas = document.getElementById("canvas2");
+		canvas.position()
+		};
+
+	function chars(evento){
+		if (window.event)
+			evento = window.event;
+			document.getElementById("string").innerHTML = evento.keyCode;
+			characters(evento.keyCode);
+	}
+
+	function characters(chars){
+		if(chars == 37){
+			leftRight-=10;
+			document.getElementById("jugador").style.marginLeft = leftRight+"px";
+		}
+		if(chars == 39){
+			leftRight+=10;
+			document.getElementById("jugador").style.marginLeft = leftRight+"px";
+		}
+		if(chars == 38){
+			upDown+=10;
+			document.getElementById("jugador").style.marginTop = upDown+"px";
+		}
+		if(chars == 40){
+			upDown-=10;
+			document.getElementById("jugador").style.marginTop = upDown+"px";
+		}
+	}
+</script>
+
+</head>
+
+{% block body%}
+{% include '_navbar.html' %}
+<hr>
+<br>
+<div style ="position: absolute; bottom: 100px; right: 200px; z-index: -1">
+	<canvas id = "canvas" width = "1032" height = "480" style="border:1px solid #000000; background-image: url(../static/map1.png) "></canvas>
+</div>
+<div style ="position: absolute; bottom: 100px; right: 967.5px; z-index: 0">
+	<canvas id = "canvas2" width = "32.25" height = "25" style="border:1px solid #000000; 
+		background-image: url(../static/car3.jpg);"></canvas>
+</div>
+{% endblock %}
