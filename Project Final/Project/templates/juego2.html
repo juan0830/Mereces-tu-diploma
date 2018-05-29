@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="/static/css/juego.css">
+
+{% extends 'base/base.html' %}
+<head>
+{% block title %} {{title}} {% endblock %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+</head>
+
+{% block body%}
+<br>
+<div class="card text-black bg-primary mb-3" style="max-width: 110rem; font-size: 16;">
+  <div class="card-header">Header</div>
+  <div class="card-body">
+    <h5 class="card-title" style="font-size: 18">Info</h5>
+    <p class="card-text">Usuario: {{correo}} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Grado: {{grado}} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Vidas: {{vidas}} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Preguntas Correctas: {{preguntas}}</p>
+  </div>
+</div>
+{% include '_navbar.html' %}
+<hr>
+<div style ="position: absolute; top: 100px; left: 0px;">
+	<canvas id="canvas" width="1344" height="800" style="border:1px solid #000000; 
+		background-image: url(../static/map2.png)"></canvas>
+</div>
+<div style="position: absolute; top: 425px; left: 5px;">
+	<canvas id="canvas2" width="32.25" height="32" style="border:1px solid #000000;
+		background-image: url(../static/car3.jpg"></canvas>
+</div>
+<script type="text/javascript">
+window.onload = function(){
+	init;
+}
+
+function init(){
+var leftRight = 0;
+var upDown = 100;
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+var img = new Image();
+img.src = "../static/car3.jpg";
+var draw = function () {
+	context.clearRect(0, 0, 0, 0);
+	context.beginPath();
+	context.drawImage(img, leftRight, upDown, 40, 40);
+	context.fill();
+	context.closePath();
+}
+//canvas.addEventListener("keypress", mover);
+}
+
+function mover(evento){
+	if(evento.keyCode == 37){
+		leftRight-=10;
+	}
+	if(evento.keyCode == 39){
+		leftRight+=10;
+	}
+	if(evento.keyCode == 38){
+		upDown+=10;
+	}
+	if(evento.keyCode == 40){
+		upDown-=10;
+	}
+}
+
+function render(){
+	canvas.position(leftRight, upDown);	
+}
+
+</script>
+{% endblock %}
